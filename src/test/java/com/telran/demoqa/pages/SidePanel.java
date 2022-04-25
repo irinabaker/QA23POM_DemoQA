@@ -67,4 +67,27 @@ public class SidePanel extends PageBase {
         clickWithJSExecutor(selectButtons,0,500);
         return new ButtonsPage(driver);
     }
+
+    @FindBy(xpath = "//span[.='Frames']")
+    WebElement selectFrames;
+
+    public FramesPage selectFrames() {
+        clickWithJSExecutor(selectFrames,0,500);
+        return new FramesPage(driver);
+    }
+    @FindBy(xpath = "//span[.='Nested Frames']")
+    WebElement selectNestedFrames;
+
+    public NestedFramesPage selectNestedFrames() {
+        clickWithJSExecutor(selectNestedFrames,0,500);
+        return new NestedFramesPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Droppable']")
+    WebElement selectDroppable;
+
+    public DroppablePage selectDroppable() {
+        clickWithJSExecutor(selectDroppable,0,500);
+        return new DroppablePage(driver);
+    }
 }
