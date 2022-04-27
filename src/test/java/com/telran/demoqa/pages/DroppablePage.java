@@ -63,7 +63,6 @@ public class DroppablePage extends PageBase {
     public DroppablePage dragMeByPosition() {
 
         Actions actions = new Actions(driver);
-        pause(3000);
         actions.dragAndDropBy(dragMe,250,50).perform();
 
         String textDropHere = dropHere.getText();
