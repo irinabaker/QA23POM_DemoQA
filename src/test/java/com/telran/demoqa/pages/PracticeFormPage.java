@@ -1,10 +1,6 @@
 package com.telran.demoqa.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
@@ -12,6 +8,12 @@ public class PracticeFormPage extends PageBase {
 
     public PracticeFormPage(WebDriver driver) {
         super(driver);
+    }
+
+    public PracticeFormPage hideIframes() {
+        hideAd();
+        hideFooter();
+        return this;
     }
 
     @FindBy(id = "firstName")
@@ -95,9 +97,6 @@ public class PracticeFormPage extends PageBase {
     @FindBy(id = "subjectsInput")
     WebElement subjectsInput;
 
-    @FindBy(id = "react-select-2-options-0")
-    WebElement selectInput;
-
     public PracticeFormPage addSubject(String[] subjects) {
         for (int i = 0; i < subjects.length; i++) {
             if (subjects[i] != null) {
@@ -111,14 +110,6 @@ public class PracticeFormPage extends PageBase {
     public PracticeFormPage autoChooseFirstItemFromDropDown() {
         subjectsInput.sendKeys("m");
         subjectsInput.sendKeys(Keys.DOWN, Keys.ENTER);
-        return this;
-    }
-
-    public PracticeFormPage autoChooseFirstItemFromDropDown1() {
-        Actions actions = new Actions(driver);
-        actions.keyDown(subjectsInput, Keys.SHIFT);
-        actions.sendKeys("Maths");
-        actions.keyUp(Keys.SHIFT);
         return this;
     }
 
@@ -170,20 +161,9 @@ public class PracticeFormPage extends PageBase {
     WebElement state1;
 
     public PracticeFormPage inputState(String st) {
-        hideAd();
         clickWithJSExecutor(state, 0, 500);
         state1.sendKeys(st);
         state1.sendKeys(Keys.ENTER);
-        return this;
-    }
-
-    @FindBy(id = "submit")
-    WebElement submitBtn;
-
-    public PracticeFormPage submit() {
-        hideFooter();
-
-        click(submitBtn);
         return this;
     }
 
@@ -197,6 +177,31 @@ public class PracticeFormPage extends PageBase {
         clickWithJSExecutor(city, 0, 500);
         city1.sendKeys(c);
         city1.sendKeys(Keys.ENTER);
+        return this;
+    }
+
+    @FindBy(id = "submit")
+    WebElement submitBtn;
+
+    public PracticeFormPage submit() {
+
+        clickWithRectangle(submitBtn, 2);
+        return this;
+    }
+
+    @FindBy(id = "example-modal-sizes-title-lg")
+    WebElement dialogTitle;
+
+
+    public String getTitleFromDialogWindow() {
+        return dialogTitle.getText();
+    }
+
+    @FindBy (id = "closeLargeModal")
+    WebElement closeModalBtn;
+
+    public PracticeFormPage closeDialogWindow() {
+        clickWithRectangle(closeModalBtn, 20);
         return this;
     }
 }
