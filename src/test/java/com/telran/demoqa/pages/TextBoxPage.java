@@ -50,4 +50,5 @@ public class TextBoxPage extends PageBase{
         Assert.assertEquals(currentAddress.getAttribute("value"),permanentAddress.getAttribute("value"));
         return this;
     }
-}
+
+    }

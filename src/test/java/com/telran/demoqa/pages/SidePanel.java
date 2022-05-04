@@ -130,4 +130,28 @@ public class SidePanel extends PageBase {
         clickWithJSExecutor(selectUploadAndDownload,0,500);
         return new UploadAndDownloadPage(driver);
     }
+
+    @FindBy(xpath = "//span[.='Links']")
+    WebElement selectLinks;
+
+    public LinksPage selectLinks() {
+        clickWithJSExecutor(selectLinks,0,500);
+        return new LinksPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement selectBrokenLinksImages;
+
+    public LinksPage selectBrokenLinksImages() {
+        clickWithJSExecutor(selectBrokenLinksImages,0,500);
+        return new LinksPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Tool Tips']")
+    WebElement selectToolTips;
+
+    public ToolTipsPage selectToolTips() {
+        clickWithJSExecutor(selectToolTips,0,500);
+        return new ToolTipsPage(driver);
+    }
 }
