@@ -69,11 +69,15 @@ public class BookStorePage extends PageBase {
 
         listOfBooks.get(0).click();
         pause(1000);
+        hideAd();
+        hideFooter();
         addToYourCollection();
         pause(1000);
         clickWithJSExecutor(backToBookStoreBtn,0,500);
         listOfBooks.get(1).click();
         pause(1000);
+        hideAd();
+        hideFooter();
         addToYourCollection();
 
         return this;

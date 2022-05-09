@@ -6,6 +6,7 @@ import com.telran.demoqa.pages.HomePage;
 import com.telran.demoqa.pages.bookStorePages.LoginPage;
 import com.telran.demoqa.tests.TestBase;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginPageTests extends TestBase {
@@ -14,7 +15,7 @@ public class LoginPageTests extends TestBase {
     public void ensurePreconditions() {
         new HomePage(driver).getBookStorePage();
         new BookStorePage(driver).clickOnLoginButton();
-        new LoginPage(driver).closeBanner();
+        new LoginPage(driver).hideAd();
     }
 
     @Test
@@ -23,7 +24,15 @@ public class LoginPageTests extends TestBase {
                 .verifyUserName("neuer")
                 .logout();
     }
+
     @Test
+    @Parameters({"name","password"})
+    public void loginPositiveParametersTest(String name, String password) {
+        new LoginPage(driver).login(name,password)
+                .verifyUserName("neuer")
+                .logout();
+    }
+    @Test(enabled = false)
     public void loginPositiveWithAssertTest() {
 
         new LoginPage(driver).closeBanner();
